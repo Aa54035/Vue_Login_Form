@@ -24,21 +24,57 @@
             v-model="passwordInput"
           />
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1"
-            >Check me out</label
-          >
+           <lable> Select User Role </lable>
+
+          <select v-model="role" class="form-control">
+            <option value="Web Designer">Web Designer</option>
+            <option value="Mainframe Developer">Mainframe Developer</option>
+            <option value="Business Analyst">Business Analyst</option>
+          </select>
+                   <br />
+
+        <div class="mb-3 form-check" >
+          <input type="radio" class="form-check-input" name="exampleCheck" value="Male" v-model="gender"/>
+          <label class="form-check-label">Male</label>
+            <br/>
+         <input type="radio" class="form-check-input" name="exampleCheck" value="FeMale" v-model="gender"/>
+          <label class="form-check-label" >
+            FeMale</label>
+
+          <br />
         </div>
+
+                       <br />
+
+        <div class="mb-3 form-check" >
+          <input type="checkbox" class="form-check-input"  value="Physics" v-model="subjects"/>
+          <label class="form-check-label">Physics</label>
+            <br/>
+         <input type="checkbox" class="form-check-input"  value="Chemistry" v-model="subjects"/>
+          <label class="form-check-label" > Chemistry  </label>
+          <br />
+         <input type="checkbox" class="form-check-input"  value="Maths" v-model="subjects"/>
+          <label class="form-check-label" > Maths  </label>
+          <br />
+
+        </div>
+ 
         <button type="submit" @click="setoutput" class="btn btn-primary">
           Submit
         </button>
       </form>
+        <br />
+        
+    <!-- <div v-if="showOutput"> -->
+    <p class="bg-warning">Email ID Entered :{{ emailInput }}</p>
+    <p class="bg-warning">Password Entered :{{ passwordInput }}</p>
+    <p class="bg-warning">Role selected :{{ role }}</p>
+   <p class="bg-warning">Gender :{{ gender}}</p>
+   <p class="bg-warning">Subjectes :{{ subjects.join('-') }}</p>
+
     </div>
-    <div v-if="showOutput">
-      <p class="bg-primary">Email ID Entered :{{ emailInput }}</p>
-      <p class="bg-primary">Password Entered :{{ passwordInput }}</p>
-    </div>
+
+    <!-- </div> -->
   </div>
 </template>
 
@@ -49,6 +85,9 @@ export default {
       emailInput: "",
       passwordInput: "",
       showOutput: false,
+      role: "",
+      gender:'Male',
+      subjects:[]
     };
   },
   methods: {
@@ -57,7 +96,8 @@ export default {
     },
 
     formSubmit(event) {
-      event.preventDefault();
+      console.log(event);
+      // event.preventDefault();
     },
   },
 };
@@ -79,7 +119,7 @@ export default {
 }
 .form-group {
   width: 400px;
-  height: 300px;
+  height: 100%;
   border: 3px double rebeccapurple;
   margin: auto;
   background: white;
